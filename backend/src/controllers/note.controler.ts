@@ -21,3 +21,13 @@ export const createNote: RequestHandler = async (req: Request, res: Response, ne
         next(err)
     }
 }
+
+export const getNote: RequestHandler = async (req: Request, res: Response, next: NextFunction) => {
+    const noteId = req.params.noteId
+    try {
+        const note = await noteModel.findById(noteId).exec()
+        res.status(200).json(note)
+    } catch (err) {
+        next(err)
+    }
+}
