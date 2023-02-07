@@ -6,6 +6,7 @@ import noteRoute from './routes/note.route'
 import NoteModel from './models/note.model'
 const app = express()
 
+app.use(express.json())
 app.use('/api/notes', noteRoute)
 app.use((req, res, next) => {
     next(Error('Endpoint not found'))
