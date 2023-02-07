@@ -1,9 +1,16 @@
-import app from './app'
+import express from 'express'
+import dotenv from 'dotenv'
 import mongoose from 'mongoose'
 import env from './utils/validateEnv'
+dotenv.config()
 
-
+const app = express()
 const port = process.env.PORT || 4000
+
+
+app.get('/', (req, res) => {
+    res.send('Hello Wordl')
+})
 mongoose.set('strictQuery', false)
 mongoose.connect(env.MONGO_CONECTION_STRING)
     .then(() => {
